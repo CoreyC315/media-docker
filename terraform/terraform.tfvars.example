@@ -1,0 +1,29 @@
+# Copy to terraform.tfvars and fill in.  cp terraform.tfvars.example terraform.tfvars
+# terraform.tfvars is gitignored — it holds your token and VPN key.
+
+# --- Proxmox connection ---
+proxmox_endpoint  = "https://10.0.10.24:8006/"
+proxmox_node      = "PM-Playground"
+proxmox_api_token = "terraform@pve!media=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# --- VM placement / shape ---
+vm_datastore    = "vm-hdd-storage"   # storage for the VM disk
+image_datastore = "local"            # storage that holds the downloaded image
+vm_disk_gb      = 60
+# vm_id         = 0                  # 0 = let Proxmox pick the next free id
+
+# --- Network (static IP) ---
+vm_ip      = "10.0.10.41"
+vm_gateway = "10.0.10.1"
+# vm_bridge = "vmbr0"
+
+# --- Access ---
+ssh_public_key       = "ssh-ed25519 AAAA... you@laptop"
+ssh_private_key_path = "~/.ssh/id_ed25519"
+# timezone           = "America/Detroit"
+
+# --- VPN ---
+# Leave empty for a demo (all UIs up, qBittorrent unprotected/UI-only).
+# Paste your ProtonVPN WireGuard private key to go fully live.
+wireguard_private_key = ""
+# vpn_server_countries = "United States"

@@ -16,6 +16,13 @@ Stack:
 | **Jellyfin** | Media server / player | http://VM-IP:8096 |
 | **Jellyseerr** | Media request portal (Overseerr for Jellyfin) | http://VM-IP:5055 |
 
+## Two ways to deploy
+
+- **Fully automated (Proxmox):** `cd terraform && terraform apply` provisions
+  the VM, installs Docker, and brings the stack up on an IP you choose. See
+  [`terraform/README.md`](terraform/README.md).
+- **Manual (any Docker host):** make a VM yourself and follow the steps below.
+
 ## Prerequisites
 
 1. A Proxmox VM running Debian 12 or Ubuntu 22.04+ (2 vCPU / 4 GB RAM is plenty

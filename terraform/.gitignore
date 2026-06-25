@@ -1,0 +1,15 @@
+# Provider plugins / local state
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+
+# Secrets — never commit
+terraform.tfvars
+*.auto.tfvars
+crash.log
+crash.*.log
+
+# Keep the example and the dependency lock file:
+!terraform.tfvars.example
+# (.terraform.lock.hcl IS committed on purpose)
