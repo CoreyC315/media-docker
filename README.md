@@ -14,6 +14,7 @@ Stack:
 | **Sonarr** | TV shows | http://VM-IP:8989 |
 | **Radarr** | Movies | http://VM-IP:7878 |
 | **Jellyfin** | Media server / player | http://VM-IP:8096 |
+| **Jellyseerr** | Media request portal (Overseerr for Jellyfin) | http://VM-IP:5055 |
 
 ## Prerequisites
 
@@ -67,6 +68,13 @@ gluetun container, not at `qbittorrent`.**
      `/data/media/movies` (Radarr).
 4. **Jellyfin** (`:8096`) — run the setup wizard, add libraries pointing at
    `/data/media/tv` and `/data/media/movies`.
+5. **Jellyseerr** (`:5055`) — run the wizard, sign in with Jellyfin
+   (`http://jellyfin:8096`), then connect your services so requests flow
+   automatically:
+   - Sonarr: `http://sonarr:8989`, Radarr: `http://radarr:7878` (use each
+     app's API key from its Settings → General).
+   This is what you hand to friends/coworkers — they request titles here
+   instead of touching Sonarr/Radarr directly.
 
 > **Why one `/data` mount?** qBittorrent, Sonarr, and Radarr all see the same
 > filesystem at `/data`, so moving a finished download into the library is an

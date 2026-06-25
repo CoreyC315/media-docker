@@ -140,3 +140,21 @@ services:
     # devices:
     #   - /dev/dri:/dev/dri   # uncomment for VAAPI/QSV hardware transcoding
     restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # Jellyseerr — media request portal (the Jellyfin-native fork of Overseerr;
+  # Overseerr proper only supports Plex). Users browse and request titles here;
+  # it hands approved requests to Sonarr/Radarr. WebUI: http://<vm-ip>:5055
+  # ---------------------------------------------------------------------------
+  jellyseerr:
+    image: fallenbagel/jellyseerr:2.7.3
+    container_name: jellyseerr
+    environment:
+      PUID: ${PUID:-1000}
+      PGID: ${PGID:-1000}
+      TZ: ${TZ:-America/Detroit}
+    ports:
+      - "5055:5055"
+    volumes:
+      - ./config/jellyseerr:/app/config
+    restart: unless-stopped
